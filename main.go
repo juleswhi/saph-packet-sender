@@ -94,30 +94,30 @@ func createBytes(
 
 	bytes = append(bytes, version)
 	bytes = append(bytes, reqType)
+    spl := strings.Split(client_addy, ".")
+
+    addr := make([]byte, 4)
+    for i, s := range spl {
+        u, err := strconv.ParseUint(s, 10, 8)
+        if err != nil {
+            fmt.Println(err)
+            continue
+        }
+
+        addr[i] = byte(u)
+    }
+
+    bytes = append(bytes, addr...)
+
+    if inc {
+        bytes = append(bytes, byte(1))
+    } else {
+        bytes = append(bytes, byte(0))
+    }
+
 	bytes = append(bytes, contentLen...)
 	bytes = append(bytes, contentType)
 	bytes = append(bytes, []byte(content)...)
-
-	spl := strings.Split(client_addy, ".")
-
-	addr := make([]byte, 4)
-	for i, s := range spl {
-		u, err := strconv.ParseUint(s, 10, 8)
-		if err != nil {
-			fmt.Println(err)
-			continue
-		}
-
-		addr[i] = byte(u)
-	}
-
-	bytes = append(bytes, addr...)
-
-	if inc {
-		bytes = append(bytes, byte(1))
-	} else {
-		bytes = append(bytes, byte(0))
-	}
 
     for i, b := range bytes {
         fmt.Printf("Byte %d = %d\n", i, b)

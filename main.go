@@ -39,12 +39,12 @@ func main() {
 			huh.NewSelect[byte]().
 				Title("Content Type").
 				Options(
-					huh.NewOption("plaintext", byte(1)),
-					huh.NewOption("code_", byte(2)),
-					huh.NewOption("code_html", byte(3)),
-					huh.NewOption("code_css", byte(4)),
-					huh.NewOption("code_lua", byte(5)),
-					huh.NewOption("none", byte(6)),
+					huh.NewOption("plaintext", byte(0)),
+					huh.NewOption("code_", byte(1)),
+					huh.NewOption("code_html", byte(2)),
+					huh.NewOption("code_css", byte(3)),
+					huh.NewOption("code_lua", byte(4)),
+					huh.NewOption("none", byte(5)),
 				).
 				Value(&contentType),
 

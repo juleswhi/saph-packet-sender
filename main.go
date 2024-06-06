@@ -34,8 +34,9 @@ func main() {
 			huh.NewSelect[byte]().
 				Title("Request").
 				Options(
-					huh.NewOption("GET", byte(1)),
-					huh.NewOption("POST", byte(2)),
+					huh.NewOption("GET", byte(0)),
+					huh.NewOption("GIVE", byte(1)),
+					huh.NewOption("INCREMENT", byte(2)),
 				).
 				Value(&request),
 
@@ -47,11 +48,8 @@ func main() {
 				Title("Content Type").
 				Options(
 					huh.NewOption("plaintext", byte(0)),
-					huh.NewOption("code_", byte(1)),
-					huh.NewOption("code_html", byte(2)),
-					huh.NewOption("code_css", byte(3)),
-					huh.NewOption("code_lua", byte(4)),
-					huh.NewOption("code_json", byte(5)),
+					huh.NewOption("markdown", byte(1)),
+					huh.NewOption("lua", byte(2)),
 				).
 				Value(&contentType),
 
